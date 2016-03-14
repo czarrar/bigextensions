@@ -6,8 +6,9 @@ Date: 2011-04-06
 Author: Zarrar Shehzad <zarrar [dot] shehzad [at] yale.edu> and Jay 
   Emerson
 Maintainer: Zarrar Shehzad <zarrar.shehzad@yale.edu>
-Depends: methods, bigmemory, plyr
-LinkingTo: bigmemory, BH
+Depends: methods, bigmemory, bigmemory.sri, plyr
+Imports: Rcpp, bigmemory
+LinkingTo: Rcpp, BH, bigmemory
 Description: A set of functions that allow manipulation of bigmemory objects
 License: LGPL-3
 LazyLoad: yes

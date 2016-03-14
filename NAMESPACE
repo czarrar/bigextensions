@@ -1,4 +1,7 @@
+import(Rcpp)
+import(bigmemory.sri)
+import(BH)
 import(methods)
-import(bigmemory, bigmemory.sri, BH)
+import(bigmemory)
 exportPattern("^[^\\.]")
 useDynLib(bigextensions)

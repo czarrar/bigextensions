@@ -117,11 +117,18 @@ setMethod("free.memory",
             return(x)
         # free up memory
         d <- describe(x)
-        .Call("CDestroyBigMatrix", x@address, PACKAGE="bigmemory")
+        #.Call("CDestroyBigMatrix", x@address, PACKAGE="bigmemory")
+        if (is.big.niftiXd(x)) {
+          hdr  <- x@header
+          mask <- x@mask
+        }
+        rm(x)
         gc()
         # reattach matrix
-        tmp <- attach.big.matrix(d, backingpath=backingpath)
-        x@address <- tmp@address
+        x <- attach.big.matrix(d, backingpath=backingpath)
+        if (is.big.niftiXd(x)) {
+          x <- as.big.nifti4d(x, hdr, mask)
+        }
         # done!
         return(x)
     }

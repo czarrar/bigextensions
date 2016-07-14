@@ -118,7 +118,7 @@ setMethod("free.memory",
         # free up memory
         d <- describe(x)
         #.Call("CDestroyBigMatrix", x@address, PACKAGE="bigmemory")
-        if (is.big.niftiXd(x)) {
+        if (class(x) == "big.nifti4d") { # not sure if this is really needed
           hdr  <- x@header
           mask <- x@mask
         }
@@ -126,7 +126,7 @@ setMethod("free.memory",
         gc()
         # reattach matrix
         x <- attach.big.matrix(d, backingpath=backingpath)
-        if (is.big.niftiXd(x)) {
+        if (class(x) == "big.nifti4d") { # not sure if this is really needed
           x <- as.big.nifti4d(x, hdr, mask)
         }
         # done!

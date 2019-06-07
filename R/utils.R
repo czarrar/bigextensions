@@ -22,6 +22,9 @@ setMethod('diag<-',
 )
 
 # copied from bigmemory
+CCleanIndices <- function(indices, rc) {
+    .Call(`_bigmemory_CCleanIndices`, indices, rc)
+}
 becleanupcols <- function(cols=NULL, nc=NULL, colnames=NULL) {
   if (is.null(cols)) cols <- 1:nc
   else {

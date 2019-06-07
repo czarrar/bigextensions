@@ -36,7 +36,7 @@ becleanupcols <- function(cols=NULL, nc=NULL, colnames=NULL) {
                    "columns of the matrix."))
       cols <- which(cols)
     }
-    tempj <- .Call("bigmemory_CCleanIndices", as.double(cols), as.double(nc), PACKAGE="bigmemory")
+    tempj <- CCleanIndices(as.double(cols), as.double(nc))
     if (is.null(tempj[[1]])) stop("Illegal column index usage in extraction.\n")
     if (tempj[[1]]) cols <- tempj[[2]]
   }
@@ -58,7 +58,7 @@ becleanuprows <- function(rows=NULL, nr=NULL, rownames=NULL) {
                    "rows of the matrix."))
       rows <- which(rows)
     }
-    tempj <- .Call("bigmemory_CCleanIndices", as.double(rows), as.double(nr), PACKAGE="bigmemory")
+    tempj <- CCleanIndices(as.double(rows), as.double(nr))
     if (is.null(tempj[[1]])) stop("Illegal row index usage in extraction.\n")
     if (tempj[[1]]) rows <- tempj[[2]]
   }
